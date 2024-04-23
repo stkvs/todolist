@@ -186,6 +186,7 @@ body {
     border-radius: 8px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .task-container .removeButton {
@@ -246,4 +247,8 @@ body {
     font-size: 1.5rem;
 }
 
-
+@media (max-width: 768px) {
+    .closeMenu i.bx {
+        line-height: 1px;
+    }   
+}
