@@ -189,6 +189,12 @@ body {
     align-items: center;
 }
 
+.task-container .added-tasks li .text {
+    max-width: 250px;
+    width: 100%;
+    word-wrap: break-word;
+}
+
 .task-container .removeButton {
     width: 20px;
     margin-right: 8px;
