@@ -2,6 +2,7 @@ const button = document.querySelector('.submit-button');
 const taskTab = document.querySelector('.list-container');
 const taskAppended = document.querySelector('.task-notification');
 
+let tasks;
 let taskName;
 let taskDeadline;
 let newTask;
@@ -42,11 +43,15 @@ function getCookie(name) {
 
 // Function to update the task list
 function updateTaskList() {
-    const tasks = [];
+    tasks = [];
+
     const taskElements = taskTab.querySelectorAll('.taskBox');
     taskElements.forEach(task => {
         tasks.push(task.innerHTML);
     });
+
+    noneTask(tasks);
+
     setCookie('tasks', JSON.stringify(tasks), 30);
 }
 
@@ -55,10 +60,31 @@ function loadTasks() {
     const tasksCookie = getCookie('tasks');
     if (tasksCookie !== "") {
         const tasks = JSON.parse(tasksCookie);
+        noneTask(tasks);
+
         tasks.forEach(i => {
             taskTab.innerHTML += "<li class='taskBox'>"+ i + "</li>";
         });
     }
+}
+
+function noneTask(tasks) {
+    const message = document.createElement('h4');
+
+    if (tasks.length === 0) {
+        message.className = 'add-tasks-text';
+        message.textContent = 'Add some tasks by pressing the +';
+        document.body.appendChild(message);
+    } else {
+        try {
+            const existingMessage = document.querySelector('.add-tasks-text');
+            if (existingMessage) {
+                document.body.removeChild(existingMessage);
+            }
+        } catch (error) {
+            console.log('No message to remove,'+ error);
+        };
+    };
 }
 
 // Load tasks when the page is loaded

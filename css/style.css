@@ -37,6 +37,15 @@ body {
     border-radius: 5px;
 }
 
+.add-tasks-text {
+    position: absolute;
+    z-index: 75;
+    text-align: center;
+    color: white;
+    opacity: 0.7;
+    font-family: 'Jetbrains Mono', sans-serif;
+}
+
 .data-container,
 .task-container {
     position: absolute;
