@@ -44,6 +44,9 @@ body {
     color: white;
     opacity: 0.7;
     font-family: 'Jetbrains Mono', sans-serif;
+    max-width: max-content;
+    width: 100%;
+    word-wrap: break-word;
 }
 
 .data-container,
