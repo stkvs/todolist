@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="task-notification"></div>
+    <div class="cover"></div>
+    <div class="data-container">
+        <div class="data-entry">
+            <div class="title">
+                <h3>Add Tasks:</h3>
+                <button class="closeMenu"><i class='bx bx-x'></i></button>
+            </div>
+            <form>
+                <div class="inputs">
+                    <input type="text" class="taskEntry" placeholder="Enter Task">
+                    <input type="date" class="taskDeadline">
+                </div>
+            </form>
+            <button class="submit-button">Submit</button>
+        </div>
+    </div>
+
+    <div class="task-container">
+        <div class="title">
+            <h2>Upcoming Tasks:</h2>
+            <button class="openMenu">+</button>
+        </div>
+        <div class="added-tasks">
+            <ul class="list-container"></ul>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/toggleMenu.js"></script>
+    <script type="module" src="js/dailyMin.js"></script>
+</body>
+</html>

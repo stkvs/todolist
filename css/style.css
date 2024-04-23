@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --black : #252422;
+    --gray : #403d39;
+    --white : #fffcf2;
+    --blurple : #4361ee;
+}
+
+@font-face {
+    font-family: 'Jetbrains Mono';
+    src: url(../assets/fonts/JetBrainsMono-Regular.ttf);
+}
+
+body {
+    font-family: 'Jetbrains Mono', sans-serif;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../assets/sky-image.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.data-container,
+.task-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.25);
+    border: 3px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    flex-direction: column;
+    border-radius: 16px;
+    padding: 8px;
+    color: white;
+}
+ 
+.cover {
+    width: 100dvw;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 75;
+    position: absolute;
+}
+
+.data-container {
+    z-index: 100;
+    margin: 8px;
+}
+
+.task-container {
+    z-index: 50;
+    aspect-ratio: 4/3;
+}
+
+.task-container .title {
+    width: 100%;
+}
+
+.task-container .title,
+.data-container .title {
+    height: auto;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Jetbrains Mono', sans-serif;
+}
+
+.task-container .title h2 {
+    margin-left: 16px;
+}
+
+.task-container .title button {
+    margin-right: 16px;
+}
+
+.task-container .title button,
+.data-container .title button {
+    width: 50px;
+    height: auto;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    background-color: transparent;
+    color: white;
+    font-size: 2rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.task-container .title button.openMenu:hover {
+    background-color: #4361ee;
+}
+
+.data-container .title button.closeMenu:hover {
+    background-color: rgba(238, 144, 144, 0.5);
+}
+
+.closeMenu i.bx {
+    line-height: normal;
+}
+
+.data-container .inputs {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-family: 'Jetbrains Mono', sans-serif;
+}
+
+.data-container .inputs input {
+    flex-grow: 1;
+    padding: 16px;
+    background-color: rgba(255, 255, 255, 0.25);
+    border: none;
+    color: white;
+    border-radius: 8px;
+    ::placeholder {
+        color: white;
+    }
+}
+
+.data-container .data-entry {
+    display: flex;
+    flex-direction: column;
+}
+
+.data-container .submit-button {
+    flex-grow: 1;
+    padding: 16px;
+    margin-top: 16px;
+    background-color: #4c98cc;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'Jetbrains Mono', sans-serif;
+}
+
+.task-container .added-tasks {
+    height: 100%;   
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.task-container .added-tasks ul {
+    list-style-type: none;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.task-container .added-tasks li {
+    border: 3px solid rgba(255, 255, 255, 0.25);
+    flex-grow: 1;
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-container .removeButton {
+    width: 20px;
+    margin-right: 8px;
+}
+
+.task-notification {
+    position: absolute; 
+    z-index: 200;
+    top: 0;
+    transform: translateY(-100vh);
+    margin-top: 16px;
+    display: flex;
+    padding: 32px;
+    width: 280px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: white;
+    border: 3px solid rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+}
+
+#drop-animation {
+    animation: 
+        moveDown 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards,
+        fade-out 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards 1s;
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes moveDown {
+    to {
+        transform: translateY(0);
+    }
+}
+
+.task-notification i#checkicon {
+    padding: 8px;
+    background-color: rgb(144, 238, 144, 0.5);
+    border-radius: 50%;
+    font-size: 1.5rem;
+}
+.task-notification i#crossicon {
+    padding: 8px;
+    background-color: rgba(238, 144, 144, 0.5);
+    border-radius: 50%;
+    font-size: 1.5rem;
+}
+
+
