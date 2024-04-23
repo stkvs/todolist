@@ -39,7 +39,7 @@ body {
 
 .add-tasks-text {
     position: absolute;
-    z-index: 75;
+    z-index: 60;
     text-align: center;
     color: white;
     opacity: 0.7;
